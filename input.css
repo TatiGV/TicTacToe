@@ -6,3 +6,27 @@
   .card {
   }
 }
+
+/* Board style */
+
+
+/* Pseudo elements */
+
+.x::after {
+  content: '?'
+}
+
+.o::after {
+  content: '?'
+}
+
+/* Tile style */
+
+
+.disabled {
+
+}
+
+
+/* Game over window */
+
