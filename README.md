@@ -30,17 +30,32 @@ En aquesta activitat crearàs un joc el DOM, HTML i CSS.
   - El taulell hauria d'estar centrat a la pàgina
   - Treu els costats innecessaris
   - Aproxima't el que puguis al clàssic taulell de tres en ratlla
+![Part 1](suport/pas1.png)
 
-![Part 1](suport/pas%201.png)
+
 
 - [ ] Afegeix contingut al taulell
   - Utilitza pseudoelements per afegir X i O a les caselles
   - Haurien d'estar el més centrats possible
-  - Recorda! Si una casella està marcada, no s'hi hauria de poder tornar a clicar
+  - In the input.css file, you have the following: 
+    ```css
+    
+      .x::after {
+        content: '?'
+      }
+      .o::after {
+        content: '?'
+      }
+    ```
+    Please, replace this in the way it looks like the image bellow.
 
-![Part 2](suport/pas%202.png)
+     ![Part 2](suport/pas2.png)
 
-Afegir recursos d'icones o elements que puguin fer servir per afegir X o O? (maybe we should add some resources of icons or elements they can use to add X and O?)
+- [ ] Centrilize icons ❌ and ⭕
+  - Add a flexbox on ```css.grid-cell  ``` class, in order for the items to be centralized. Adjust also the font-size, to look like the image bellow.
+
+     ![Part 3](suport/pas3.png)
+
 
 ### 2. Afegeix funcionalitat
 
@@ -48,6 +63,7 @@ Afegir recursos d'icones o elements que puguin fer servir per afegir X o O? (may
   - Programa un click event al grid per marcar les caselles
   - Afegeix les comprovacions necessàries (empat, guanyador)
   - Fes el botó de reset funcional
+       ![Part 1]("https://allma.si/blog/wp-content/uploads/2021/12/markers-with-styles.gif")
 
 - [ ] Acaba d'estilar el joc
   - Estila la pantalla de 'final del joc'
