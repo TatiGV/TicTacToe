@@ -9,25 +9,22 @@
 
 /* Board style */
 
-
 /* Pseudo elements */
 .x::before {
-  content: '';
+  content: "";
 }
 
 .o::before {
-  content: '';
+  content: "";
 }
 
-
 .x::after {
-  content: '❌';
+  content: "❌";
 }
 
 .o::after {
-  content: '⭕';
+  content: "⭕";
 }
-
 
 /* Tile style */
 
@@ -51,19 +48,19 @@
   font-size: 28px;
 }
 .grid-cell:nth-child(-n + 3) {
-    border-top: none;
+  border-top: none;
 }
 
 .grid-cell:nth-child(3n + 1) {
-    border-left: none;
+  border-left: none;
 }
 
 .grid-cell:nth-child(3n + 3) {
-    border-right: none;
+  border-right: none;
 }
 
 .grid-cell:nth-last-of-type(-n + 3) {
-    border-bottom: none;
+  border-bottom: none;
 }
 .disabled {
   cursor: not-allowed;
@@ -73,6 +70,4 @@
   background: #eee;
 }
 
-
 /* Game over window */
-
