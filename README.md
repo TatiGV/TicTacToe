@@ -67,7 +67,7 @@ En aquesta activitat crearàs un joc el DOM, HTML i CSS.
 
   - Add css style in order for the items to be centralized and bigger.
 
-    ![Part 3](suport/pas3.png)
+    ![Part 3](suport/pas3.PNG)
 
   - [ ] Test if your `CSS` is working properly
         ![Part 4](https://allma.si/blog/wp-content/uploads/2021/12/applying-classes-to-cells.gif)
