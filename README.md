@@ -17,7 +17,7 @@ En aquesta activitat crearàs un joc el DOM, HTML i CSS.
 - `npm start` per a inicialitzar el compilador de Tailwind CSS.
 - Obre `index.html` al navegador amb el Live Server de VS Code.
 
-## Requisits bàsics
+## Basic requirements
 
 - Escull un dels següents jocs i desenvolupa'l utilitzant tot el que has après de HTML, CSS, JavaScript i el DOM.
 - Si ho prefereixes, pots fer un altre joc que no estigui en aquesta llista
