@@ -1,38 +1,30 @@
-// holds the deck of cards for the game
-let cards = [];
+document.addEventListener("click", (event) => {
+  const target = event.target;
+  const isCell = target.classList.contains("grid-cell");
+  const isDisabled = target.classList.contains("disabled");
 
-// generates a new deck of cards, with size / 2 pairs, and shuffled
-function generateCards(size) {}
+  if (isCell && !isDisabled) {
+    // The player clicked on a cell that is still empty
+  }
+});
 
-// shuffles an array
-function shuffle(arr) {}
+const game = {
+  xTurn: true,
+  xState: [],
+  oState: [],
+  winningStates: [
+    // Rows
+    ["0", "1", "2"],
+    ["3", "4", "5"],
+    ["6", "7", "8"],
 
-// flips a card by id
-function flipCard(id) {}
+    // Columns
+    ["0", "3", "6"],
+    ["1", "4", "7"],
+    ["2", "5", "8"],
 
-// marks any flipped cards as matched if they match
-function checkMatched() {}
-
-// shows a message if the game is over
-function checkWin() {}
-
-// sets all flipped props to false except for the matched ones
-function flipBack() {}
-
-// handles the click on a card
-function handleCardClick(id) {}
-
-// creates the DOM elements for the cards
-function showCards() {}
-
-// updates the classes on the card DOM elements based on the state of the cards
-function updateCards() {}
-
-// initializes the game
-function createGame(size) {
-  generateCards(size * size);
-  showCards();
-}
-
-// INITIALIZE THE GAME WHEN THE PAGE LOADS
-createGame(4);
+    // Diagonal
+    ["0", "4", "8"],
+    ["2", "4", "6"],
+  ],
+};
