@@ -31,7 +31,7 @@ En aquesta activitat crearàs un joc el DOM, HTML i CSS.
   - The counter should be centered on the page
   - Remove unnecessary sides
   - Get as close as you can to the classic three-in-a-row board
-    ![Part 1](suport/pas1.png)
+  ![Part 1](suport/pas1.png)
 
 - [ ] Add content
 
