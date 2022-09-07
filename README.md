@@ -24,40 +24,43 @@ En aquesta activitat crearàs un joc el DOM, HTML i CSS.
 
 ### Tres en ratlla
 
-### 1. Estila el taulell
+### 1. Style the webpage
 
-- [ ] Afegeix el CSS necessari
+- [ ] Add the necessary CSS
 
-  - El taulell hauria d'estar centrat a la pàgina
-  - Treu els costats innecessaris
-  - Aproxima't el que puguis al clàssic taulell de tres en ratlla
+  - The counter should be centered on the page
+  - Remove unnecessary sides
+  - Get as close as you can to the classic three-in-a-row board
     ![Part 1](suport/pas1.png)
 
-- [ ] Afegeix contingut al taulell
+- [ ] Add content
 
-  - Utilitza pseudoelements per afegir X i O a les caselles
-  - Haurien d'estar el més centrats possible
-  - In the input.css file, you have the following:
+  - Use pseudo-elements to add X's and O's to boxes
+  - On your css file, add the following:
 
-        .x::after {
-          content: "?";
-        }
-        .o::after {
-          content: "?";
-        }
+    ```css
+    .x::after {
+      content: "?";
+    }
+    .o::after {
+      content: "?";
+    }
+    ```
 
-    Please, replace this in the way it looks like the image bellow.
+    Now, let's replace the "?" by the icons "❌" and "⭕" in the way it looks like the image bellow.
 
     ![Part 2](suport/pas2.png)
 
-        .x::after {
-          content: "❌";
-        }
-        .o::after {
-          content: "⭕";
-        }
+    ```css
+    .x::after {
+      content: "❌";
+    }
+    .o::after {
+      content: "⭕";
+    }
+    ```
 
-    This means every time we apply a class of .x or .o to one of the cells, it will be marked. However, if we do so, they don't look quite right.
+    This piece of CSS code above means every time we apply a class of .x or .o to one of the cells, it will be marked.
 
 - [ ] Centralize icons ❌ and ⭕
 
@@ -65,8 +68,8 @@ En aquesta activitat crearàs un joc el DOM, HTML i CSS.
 
     ![Part 3](suport/pas3.png)
 
-- [ ] Test if your `CSS` is working properly
-      ![Part 4](https://allma.si/blog/wp-content/uploads/2021/12/applying-classes-to-cells.gif)
+  - [ ] Test if your `CSS` is working properly
+        ![Part 4](https://allma.si/blog/wp-content/uploads/2021/12/applying-classes-to-cells.gif)
 
 ### 2. Add functionality
 
@@ -122,11 +125,12 @@ How did we get the possible combinations? Based on those values, we can list the
 
 ![Part 6](https://allma.si/blog/wp-content/uploads/2021/12/playing-draw.gif)
 
-- Create a h1 tittle with HTML and add on your code the possible results based on the matches
+- Create a HTML tag `h1` tittle with HTML and add on your code the possible results based on the matches
 - Make sure the reset button appears at the end of the game
 
 ## Recursos
 
+- [How to Recreate Tic-Tac-Toe in Vanilla JavaScript](https://www.webtips.dev/tic-tac-toe-in-javascript)
 - [MDN - Manipulating the DOM Guide](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Manipulating_documents)
 - [Plain JS - Common DOM Manipulation methods](https://plainjs.com/javascript/manipulation/)
 - [Eloquent JavaScript - The DOM](https://eloquentjavascript.net/14_dom.html)
