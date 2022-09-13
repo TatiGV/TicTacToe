@@ -21,23 +21,30 @@ En aquesta activitat crearàs un joc el DOM, HTML i CSS.
 
 - Escull un dels següents jocs i desenvolupa'l utilitzant tot el que has après de HTML, CSS, JavaScript i el DOM.
 - Si ho prefereixes, pots fer un altre joc que no estigui en aquesta llista
+- You should create the grid for the tic tac toe in `HTML`
+- You should style to be the max similar as possible to the image `pas3.PNG`
+- You should use JavaScript to display "x" and "o" on the grid.
 
 ### Tres en ratlla
 
-### 1. Style the webpage
+### 1. Primera Part
 
-- [ ] Add the necessary CSS
+- [ ] Afegiu l'HTML necessari
 
-  - The counter should be centered on the page
-  - Remove unnecessary sides
-  - Get as close as you can to the classic three-in-a-row board
+  - Haurieu de crear el `<div>` necessari pel comptador.
+
+- [ ] Afegiu el CSS necessari:
+
+  - El comptador ha d'estar centrat a la pàgina.
+  - Traieu els costats innecessaris. 
+  - Feu-ho el més semblant possible a un taulell de tres en ratlla.
 
   ![Part 1](suport/pas1.png)
 
-- [ ] Add content
+- [ ] Afegiu contingut
 
-  - Use pseudo-elements to add X's and O's to boxes
-  - On your css file, add the following:
+  - Utilitzeu pseudoelements per afegir X's i O's als quadres
+  - Al vostre arxiu Css, afegiu el següent:
 
     ```css
     .x::after {
@@ -48,7 +55,8 @@ En aquesta activitat crearàs un joc el DOM, HTML i CSS.
     }
     ```
 
-    Now, let's replace the "?" by the icons "❌" and "⭕" in the way it looks like the image bellow.
+    Ara, reemplacem "?" pels icones "❌" i "⭕" tal com es veu a la imatge de sota.
+
 
     ![Part 2](suport/pas2.png)
 
@@ -61,35 +69,36 @@ En aquesta activitat crearàs un joc el DOM, HTML i CSS.
     }
     ```
 
-    This piece of CSS code above means every time we apply a class of .x or .o to one of the cells, it will be marked.
+    El fragment de codi CSS anterior significa que cada vegada que apliquem una classe de .x o .o a una de les cel·les, es marcarà.
+    
+    
+- [ ] Centreu els icones ❌ i ⭕
 
-- [ ] Centralize icons ❌ and ⭕
-
-  - Add css style in order for the items to be centralized and bigger.
+  - Afegiu l'estil CSS per tal que els elements estiguin centralitzats i més grans.
 
     ![Part 3](suport/pas3.PNG)
 
-  - [ ] Test if your `CSS` is working properly
+  - [ ] Comproveu que el vostre `CSS` estigui funcionant correctament
         ![Part 4](https://allma.si/blog/wp-content/uploads/2021/12/applying-classes-to-cells.gif)
 
-### 2. Add functionality
+### 2. Afegeix funcionalitat
 
-- [ ] Make your game looking like the image bellow
+Recordatori: Tota la interactivitat i les funcionalitats haurán d'estar fetes utilitzant funcions de JavaScript.
 
-  - Schedule a click event on the grid to mark the boxes
-  - Add necessary checks (draw, winner)
-  - Add CSS to make the cell disabled after the click
+- [ ] Feu que el vostre joc s'assembli a la imatge inferior.
 
-Reminder: all the interactivity and functionalities will be done using JavaScript functions.
+  - Programeu un esdeveniment de clic al grid per marcar les caselles
+  - Afegiu els checks necessaris (draw, winner)
+  - Afegiu CSS per desactivar la cel·la després del clic
 
 ![Part 5](https://allma.si/blog/wp-content/uploads/2021/12/markers-with-styles.gif)
 
-- Create a button written <button>restart</button> with HTML
-- Make the reset button functional
+- Creeu un botó <button>restart</button> amb HTML
+- Feu que el botó de reinici sigui funcional.
 
-- [ ] Create the game
+- [ ] Creeu el joc
 
-  Now let's focus our attention on actually creating the game itself. We have the board, we have it styled, let's add the logic. First, we want to define an object for storing the state of our game:
+ Ara centrem la nostra atenció a crear realment el joc en si. Tenim el tauler, tenim l'estil i ara afegirem la lògica. En primer lloc, volem definir un objecte per emmagatzemar l'state del nostre joc:
 
   ```js const game = {
       xTurn: true,
@@ -113,21 +122,21 @@ Reminder: all the interactivity and functionalities will be done using JavaScrip
   }
   ```
 
-This object will hold 4 different properties:
+Aquest objecte tindrà 4 propietats diferents:
 
-1. `xTurn`, a flag to switch between turns
-2. `xState`, the state of X, represented with an array of strings
-3. `oState`, the state of Y, represented in the same way
-4. `winningStates`, the possible combinations to win the game.
+1. `xTurn`, una bandera per intercanviar torns.
+2. `xState`, l'estat de la X, representat amb un array d'strings.
+3. `oState`, l'estat de la Y, representat de la mateixa manera.
+4. `winningStates`, les possibles combinacions per guanyar el joc.
 
-How did we get the possible combinations? Based on those values, we can list the possible winning states here. We will match this against `xState` and `oState` later on to see who is winning the game.
+Com hem aconseguit les possibles combinacions? A partir d'aquests valors, podem enumerar els possibles estats guanyadors aquí. Compararem això amb `xState` i `oState` més endavant per veure qui està guanyant el joc.
 
-### 3. Style the 'endgame' screen
+### 3. Doneu-li estil a la pantalla "final del joc".
 
 ![Part 6](https://allma.si/blog/wp-content/uploads/2021/12/playing-draw.gif)
 
-- Create a HTML tag `h1` tittle with HTML and add on your code the possible results based on the matches
-- Make sure the reset button appears at the end of the game
+- Creeu una etiqueta de titol HTML `h1` i afegiu al vostre codi els resultats possibles en funció de les coincidències.
+- Assegureu-vos que el botó de reset apareix al final del joc.
 
 ## Recursos
 
