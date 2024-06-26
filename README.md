@@ -19,11 +19,11 @@ En aquesta activitat crearàs un joc el DOM, HTML i CSS.
 
 ## Basic requirements
 
-- Escull un dels següents jocs i desenvolupa'l utilitzant tot el que has après de HTML, CSS, JavaScript i el DOM.
-- Si ho prefereixes, pots fer un altre joc que no estigui en aquesta llista
-- You should create the grid for the tic tac toe in `HTML`
-- You should style to be the max similar as possible to the image `pas3.PNG`
-- You should use JavaScript to display "x" and "o" on the grid.
+- Desenvolupa el joc utilitzant tot el que has après de HTML, CSS, JavaScript i el DOM.
+- Si ho prefereixes, pots fer un altre joc.
+- Crea un grid pel tic tac toe en `HTML`
+- El estil ha de ser semblant al que es mostra a l'image `pas3.PNG`
+- Fes servir JavaScript per mostrar l' "x" i el "o" al grid.
 
 ### Tres en ratlla
 
