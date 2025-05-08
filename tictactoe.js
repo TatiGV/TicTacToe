@@ -24,8 +24,8 @@ const game = {
 }
 
 // El teu codi aquí
-
-document.addEventListener('click', event => {
+let tablero = document.getElementById("game");
+tablero.addEventListener('click', event => {
     // Accedeix als elements html necessaris
 
     // El jugador fa click a una casella buida
