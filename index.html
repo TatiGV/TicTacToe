@@ -13,39 +13,55 @@
 
 <body>
 
-  <h1>TIC-TAC-TOE</h1>
+  <div class="main-container">
+    <h1>TIC-TAC-TOE</h1>
 
-  <!-- Taulell del joc -->
-  <div id="game"></div>
-
-
-  <!-- NUEVO -->
-  <div class="container-text">
-    <span class="text-turn"></span>
-  </div>
-
-  <!-- Missatge de final de partida -->
-  <div class="game-over">
-    <span class="game-over-text"></span>
-  </div>
-
-  <div class="btn restart hidden">
-    <button class="face-combo">
-      <div class="deadpool-face">
-        <div class="ded eye"></div>
+    <!-- tabla de Score -->
+    <div class="scoreboard-container">
+      <div id="deadpool-score" class="scoreboard">
+        <h2>Deadpool</h2>
+        <p>Wins: <span id="deadpool-wins">0</span></p>
+        <p>Losses: <span id="deadpool-losses">0</span></p>
+        <p>Total wins: <span id="deadpool-total">0</span></p>
       </div>
-      <div class="wolverine-face">
-        <div class="wol mask"></div>
-        <div class="wol-eye"></div>
+
+      <div id="wolverine-score" class="scoreboard">
+        <h2>Wolverine</h2>
+        <p>Wins: <span id="wolverine-wins">0</span></p>
+        <p>Losses: <span id="wolverine-losses">0</span></p>
+        <p>Total wins: <span id="wolverine-total">0</span></p>
       </div>
-    </button>
+    </div>
+
+    <!-- tabla de juego -->
+    <div id="game"></div>
+
+    <!-- Imagen turno -->
+    <div class="container-text">
+      <span class="text-turn"></span>
+    </div>
+
+    <!-- boton start/restart -->
+    <div class="btn restart hidden">
+      <button class="face-combo">
+        <div class="deadpool-face">
+          <div class="ded eye"></div>
+        </div>
+        <div class="wolverine-face">
+          <div class="wol mask"></div>
+          <div class="wol-eye"></div>
+        </div>
+      </button>
+    </div>
+  
+    <!-- Popup de resultado -->
+    <div class="hidden popup">
+      <div id="popup-content"></div>
+      <button class="popup-close">OK</button>
+    </div>
   </div>
 
-  <!-- Popup de resultado -->
-  <div class="hidden popup">
-    <div id="popup-content"></div>
-    <button class="popup-close">OK</button>
-  </div>
+  <button id="reset-scores">Reset scores</button>
 </body>
 
 </html>

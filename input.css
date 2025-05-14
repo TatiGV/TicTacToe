@@ -1,18 +1,20 @@
 @import 'tailwindcss';
 
 
-
 /*screen*/
 @layer base {
   body {
     @apply min-h-screen bg-[url(images/deadwolvering.jpeg)] bg-center bg-cover flex flex-col items-center justify-center
   }
 
+  /* Tile style */
   h1 {
-    font-family: fantasy;
-    font-size: 50px;
-    color: #ebd61d;
-    margin-bottom: 50px;
+    @apply flex justify-center items-center font-fantasy text-[50px] text-[#ebd61d] mb-[50px];
+  }
+
+  /* Tile score container */
+  h2 {
+    @apply font-fantasy text-black text-xl;
   }
 
   img {
@@ -20,28 +22,31 @@
   }
 }
 
-/* Board style */
-
-@layer components {
-  #game {
-    @apply grid grid-cols-3 gap-2 w-fit;
-  }
-
-  .cell {
-    @apply relative w-32 h-32 border-4 border-black bg-red-600 text-5xl flex items-center justify-center hover:bg-yellow-400 transition-all duration-150;
-  }
-
-  .container-text {
-    @apply mt-8
-  }
-
-  .text-turn {
-    @apply text-xl text-white font-bold
-  }
-
+/* div que envuelve todo */
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 80vh;
 }
 
+/*Score board*/
+.scoreboard-container {
+  position: absolute;
+  text-align: center;
+  top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px
+}
 
+.scoreboard {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: fantasy;
+}
 
 /* Pseudo elements */
 .x::after {
@@ -74,181 +79,210 @@
   pointer-events: none;
 }
 
-/* Tile style */
+/* Board style */
 
-/* Game over window */
-@layer utilities {
+@layer components {
 
-  /*button*/
-  .hidden {
-    display: none !important;
-    /*!important hace que se anule el display: flex de .btn*/
+  /* grid del tablero */
+  #game {
+    @apply grid grid-cols-3 gap-2 w-fit;
   }
 
-  /* Contenedor del botón */
-
-  .btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s ease;
+  /* celdas */
+  .cell {
+    @apply relative w-32 h-32 border-4 border-black bg-red-600 text-5xl flex items-center justify-center hover:bg-yellow-400 transition-all duration-150;
   }
 
-  /* Botón combinado */
-  .face-combo {
-    position: relative;
-    width: 204px;
-    height: 195px;
-    border: none;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 9.5rem;
-    transition: all 0.5s ease;
-    cursor: pointer;
-    transform: scale(0.9);
+  /* imagen de turno */
+  .container-text {
+    @apply mt-8 bg-white
   }
 
-  /* Mitad izquierda - Deadpool */
-  .deadpool-face {
-    width: 102px;
-    height: 195px;
-    border-radius: 9.5rem 0 0 9.5rem;
-    background: linear-gradient(90deg,
-        #9d0000 5%, #af0000 10%, #cf0102 30%,
-        #b10101 50%, #cf0102 70%, #c00101 80%, #c00101 95%);
-    box-shadow: inset 2px 0px 5px rgba(0, 0, 0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s ease;
-    position: relative;
+  /* botón reset scores */
+  #reset-scores {
+    @apply mt-4 bg-red-800 text-white font-fantasy px-2 py-1 rounded cursor-pointer hover:text-red-800 hover:bg-white
   }
 
-  /* Ojo de Deadpool */
-  .ded {
-    position: absolute;
-    background-color: #090b0c;
-    border: none;
-    width: 45px;
-    height: 35px;
-    left: 20px;
-    clip-path: polygon(1% 1%,
-        99% 59%, 91% 73%, 85% 81%, 77% 89%, 71% 94%,
-        65% 98%, 58% 99%, 52% 99%, 44% 98%, 38% 97%,
-        33% 92%, 28% 85%, 23% 75%);
-    transition: all 0.5s ease;
-  }
-
-  /* Mitad derecha - Wolverine */
-  .wolverine-face {
-    width: 102px;
-    height: 195px;
-    border-radius: 0 9.5rem 9.5rem 0;
-    background: linear-gradient(90deg,
-        #fce620 5%, #ebd61d 10%, #f5e024 30%,
-        #e6d31d 50%, #f5e024 70%, #ebd61d 80%, #fce620 95%);
-    box-shadow: inset -2px 0 5px rgba(0, 0, 0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s ease;
-    position: relative;
-  }
-
-  /* Máscara de Wolverine */
-  .wol {
-    position: absolute;
-    border: none;
-    background-color: transparent;
-    box-shadow: none;
-    width: 130px;
-    height: 190px;
-    bottom: 15px;
-    right: -30px;
-    transition: all 0.5s ease;
-    clip-path: polygon(98% 1%, 85% 15%, 73% 28%, 61% 38%, 49% 46%,
-        35% 50%, 23% 54%, 15% 57%, 10% 66%, 13% 78%,
-        21% 86%, 32% 87%, 54% 83%, 42% 100%, 62% 89%,
-        73% 85%, 81% 73%, 85% 63%, 90% 40%, 93% 28%);
-  }
-
-  /* Ojo de Wolverine */
-  .wol-eye {
-    position: absolute;
-    border: none;
-    background-color: #090b0c;
-    box-shadow: none;
-    width: 45px;
-    height: 35px;
-    transition: all 0.5s ease;
-    clip-path: polygon(1% 1%,
-        99% 59%, 91% 73%, 85% 81%, 77% 89%, 71% 94%,
-        65% 98%, 58% 99%, 52% 99%, 44% 98%, 38% 97%,
-        33% 92%, 28% 85%, 23% 75%);
-    transform: rotateY(180deg);
-  }
-
-  /* Hover efectos */
-  .btn:hover .face-combo {
-    box-shadow:
-      -4px 0 10px 9px #9d0000,
-      /* borde rojo izquierdo */
-      4px 0 10px 9px black;
-    /* borde amarillo derecho */
-  }
-
-  .btn:hover .deadpool-face {
-    width: 102px;
-    height: 195px;
-    border-radius: 9.5rem 0 0 9.5rem;
-    background: black;
-    box-shadow: inset 2px 0px 5px rgba(0, 0, 0);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.5s ease;
-    position: relative;
-  }
-
-  .btn:hover .ded {
-    background-color: #ececec;
-  }
-
-  .btn:hover .wol {
-    background-color: #090b0c;
-    right: -35px;
-    transform: rotateY(0deg);
-  }
-
-  .btn:hover .wol-eye {
-    background-color: #ececec;
-  }
-
-  /* Click efectos */
-  .btn:active .face-combo:not(:hover) {
-    filter: grayscale(1);
-  }
-
-  .btn:active .face-combo:hover {
-    transform: scale(1.1);
-  }
-
-  .btn:active .face-combo:hover {
-    transform: scale(0.8);
-    /* ligeramente más grande al hacer click */
-  }
-
-  .restart {
-    @apply fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 flex justify-center items-center;
-  }
-
+  /* popup ganador/empate */
   .popup {
     @apply fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-4 rounded shadow-lg text-center z-50;
   }
 
+  /* botón popup cerrar */
   .popup-close {
     @apply mt-2 bg-black text-white px-4 py-1 rounded;
   }
+}
+
+/* ---------------------- Botón Start/restart wolverine-deadpool ----------------------*/
+
+.hidden {
+  display: none !important;
+  /*!important hace que se anule el display: flex de .btn*/
+}
+
+/*contenedor del botón*/
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+}
+
+/* Botón combinado */
+.face-combo {
+  position: relative;
+  width: 204px;
+  height: 195px;
+  border: none;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9.5rem;
+  transition: all 0.5s ease;
+  cursor: pointer;
+  transform: scale(0.9);
+}
+
+/* Mitad izquierda - Deadpool */
+.deadpool-face {
+  width: 102px;
+  height: 195px;
+  border-radius: 9.5rem 0 0 9.5rem;
+  background: linear-gradient(90deg,
+      #9d0000 5%, #af0000 10%, #cf0102 30%,
+      #b10101 50%, #cf0102 70%, #c00101 80%, #c00101 95%);
+  box-shadow: inset 2px 0px 5px rgba(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+/* Ojo de Deadpool */
+.ded {
+  position: absolute;
+  background-color: #090b0c;
+  border: none;
+  width: 45px;
+  height: 35px;
+  left: 20px;
+  clip-path: polygon(1% 1%,
+      99% 59%, 91% 73%, 85% 81%, 77% 89%, 71% 94%,
+      65% 98%, 58% 99%, 52% 99%, 44% 98%, 38% 97%,
+      33% 92%, 28% 85%, 23% 75%);
+  transition: all 0.5s ease;
+}
+
+/* Mitad derecha - Wolverine */
+.wolverine-face {
+  width: 102px;
+  height: 195px;
+  border-radius: 0 9.5rem 9.5rem 0;
+  background: linear-gradient(90deg,
+      #fce620 5%, #ebd61d 10%, #f5e024 30%,
+      #e6d31d 50%, #f5e024 70%, #ebd61d 80%, #fce620 95%);
+  box-shadow: inset -2px 0 5px rgba(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+/* Máscara de Wolverine */
+.wol {
+  position: absolute;
+  border: none;
+  background-color: transparent;
+  box-shadow: none;
+  width: 130px;
+  height: 190px;
+  bottom: 15px;
+  right: -30px;
+  transition: all 0.5s ease;
+  clip-path: polygon(98% 1%, 85% 15%, 73% 28%, 61% 38%, 49% 46%,
+      35% 50%, 23% 54%, 15% 57%, 10% 66%, 13% 78%,
+      21% 86%, 32% 87%, 54% 83%, 42% 100%, 62% 89%,
+      73% 85%, 81% 73%, 85% 63%, 90% 40%, 93% 28%);
+}
+
+/* Ojo de Wolverine */
+.wol-eye {
+  position: absolute;
+  border: none;
+  background-color: #090b0c;
+  box-shadow: none;
+  width: 45px;
+  height: 35px;
+  transition: all 0.5s ease;
+  clip-path: polygon(1% 1%,
+      99% 59%, 91% 73%, 85% 81%, 77% 89%, 71% 94%,
+      65% 98%, 58% 99%, 52% 99%, 44% 98%, 38% 97%,
+      33% 92%, 28% 85%, 23% 75%);
+  transform: rotateY(180deg);
+}
+
+/* Hover efectos */
+.btn:hover .face-combo {
+  box-shadow:
+    -4px 0 10px 9px #9d0000,
+    /* borde rojo izquierdo */
+    4px 0 10px 9px black;
+  /* borde amarillo derecho */
+}
+
+.btn:hover .deadpool-face {
+  width: 102px;
+  height: 195px;
+  border-radius: 9.5rem 0 0 9.5rem;
+  background: black;
+  box-shadow: inset 2px 0px 5px rgba(0, 0, 0);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+.btn:hover .ded {
+  background-color: #ececec;
+}
+
+.btn:hover .wol {
+  background-color: #090b0c;
+  right: -35px;
+  transform: rotateY(0deg);
+}
+
+.btn:hover .wol-eye {
+  background-color: #ececec;
+}
+
+/* Click efectos */
+.btn:active .face-combo:not(:hover) {
+  filter: grayscale(1);
+}
+
+.btn:active .face-combo:hover {
+  transform: scale(1.1);
+}
+
+.btn:active .face-combo:hover {
+  transform: scale(0.8);
+  /* ligeramente más grande al hacer click */
+}
+
+/* div restart */
+.restart {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

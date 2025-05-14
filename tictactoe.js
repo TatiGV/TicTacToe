@@ -25,12 +25,33 @@ const game = {
 
 // El teu codi aquí
 
+// cargar marcador desde el localStorage o iniciar desde cero
+let scores = JSON.parse(localStorage.getItem("scores")) || {
+    deadpool: { wins: 0, losses: 0, total: 0 },
+    wolverine: { wins: 0, losses: 0, total: 0 }
+};
+
+//Mostrar marcador
+function updateScoreboard() {
+    document.getElementById("deadpool-wins").textContent = scores.deadpool.wins;
+    document.getElementById("deadpool-losses").textContent = scores.deadpool.losses;
+    document.getElementById("deadpool-total").textContent = scores.deadpool.total;
+
+    document.getElementById("wolverine-wins").textContent = scores.wolverine.wins;
+    document.getElementById("wolverine-losses").textContent = scores.wolverine.losses;
+    document.getElementById("wolverine-total").textContent = scores.wolverine.total;
+}
+
+updateScoreboard();
+
 let board = document.getElementById("game");
-let gameOverText = document.querySelector(".game-over-text");
 
 const restartContainer = document.querySelector(".restart");
 const restartBtn = document.querySelector(".restart button");
-restartContainer.classList.add("hidden");
+
+restartContainer.classList.remove("hidden");
+
+board.classList.add("hidden");
 
 //creo el tablero
 
@@ -43,22 +64,18 @@ for (let i = 0; i <= 8; i++) {
 
 // muesto de quién es el turno
 
-let turnText = document.querySelector(".text-turn");
+let turnText = document.querySelector(".container-text");
+let turnSpan = document.querySelector(".text-turn");
+turnText.classList.add("hidden");
+
 function showTurn() {
+    turnText.classList.remove("hidden");
     if (game.xTurn === true) {
-        turnText.innerHTML = `
-            <img src="./images/wolver.png" alt="Wolverine"/>
-            <span>Your turn</span>
-        `;
+        turnSpan.innerHTML = `<img src="./images/wolver.png" alt="Wolverine"/>`;
     } else {
-        turnText.innerHTML = `
-        <img src="./images/deadpool.png" alt="Deadpool" />
-        <span>Your turn</span>
-    `;
+        turnSpan.innerHTML = `<img src="./images/deadpool.png" alt="Deadpool" />`;
     }
 }
-
-showTurn();
 
 board.addEventListener('click', event => {
     // Accedeix als elements html necessaris
@@ -104,9 +121,9 @@ board.addEventListener('click', event => {
         } else {
             showPopup("o");
         }
-
         board.style.pointerEvents = "none"; // no activa el hover
         restartContainer.classList.remove("hidden");
+        turnText.classList.add("hidden");
         return;
     }
 
@@ -115,6 +132,7 @@ board.addEventListener('click', event => {
     if (totalPlays === 9) {
         showPopup("DRAW!!!");
         restartContainer.classList.remove("hidden");
+        turnText.classList.add("hidden");
         return;
     }
 
@@ -138,12 +156,13 @@ restartBtn.addEventListener('click', () => {
     const cell = document.querySelectorAll(".cell");
     cell.forEach(cell => cell.classList.remove("x", "o"));
 
-    game.xTurn = true;
+    game.xTurn = Math.random() < 0.5;
     game.xState = [];
     game.oState = [];
 
-    gameOverText.textContent = "";
     board.style.pointerEvents = "auto";
+
+    board.classList.remove("hidden");
     showTurn();
 
     restartContainer.classList.add("hidden"); // Ocultar botón de nuevo
@@ -154,10 +173,16 @@ function showPopup(winner) {
     const popupContent = document.getElementById("popup-content");
 
     if (winner === "x") {
+        scores.wolverine.wins++;
+        scores.deadpool.losses++;
+        scores.wolverine.total++;
         popupContent.innerHTML = `
         <img src="./images/wolver.png" alt="Wolverine"/>
         <span>Wolvering win!</span>`;
     } else if (winner === "o") {
+        scores.deadpool.wins++;
+        scores.wolverine.losses++;
+        scores.deadpool.total++;
         popupContent.innerHTML = `
         <img src="./images/deadpool.png" alt="Deadpool" />
         <span>Deadpool win!</span>
@@ -166,9 +191,21 @@ function showPopup(winner) {
         popupContent.innerHTML = `<p>DRAW!</p>`;
     }
 
+    localStorage.setItem("scores", JSON.stringify(scores));
+    updateScoreboard();
+
     popup.classList.remove("hidden");
 }
 
 document.querySelector(".popup-close").addEventListener("click", () => {
     document.querySelector(".popup").classList.add("hidden");
+});
+
+document.getElementById("reset-scores").addEventListener("click", () => {
+    scores = {
+        wolverine: { wins: 0, losses: 0, total: 0 },
+        deadpool: { wins: 0, losses: 0, total: 0 }
+    };
+    localStorage.setItem("scores", JSON.stringify(scores));
+    updateScoreboard();
 });
