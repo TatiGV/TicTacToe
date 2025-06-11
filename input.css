@@ -9,12 +9,12 @@
 
   /* Tile style */
   h1 {
-    @apply flex justify-center items-center font-fantasy text-[50px] text-[#ebd61d] mb-[50px];
+    @apply flex justify-center items-center text-[50px] text-[#ebd61d] mb-[50px];
   }
 
   /* Tile score container */
   h2 {
-    @apply font-fantasy text-black text-xl;
+    @apply text-black text-xl;
   }
 
   img {
@@ -100,7 +100,7 @@
 
   /* botón reset scores */
   #reset-scores {
-    @apply mt-4 bg-red-800 text-white font-fantasy px-2 py-1 rounded cursor-pointer hover:text-red-800 hover:bg-white
+    @apply mt-4 bg-red-800 text-white px-2 py-1 rounded cursor-pointer hover:text-red-800 hover:bg-white
   }
 
   /* popup ganador/empate */
