@@ -9,16 +9,20 @@
 
   /* Tile style */
   h1 {
-    @apply flex justify-center items-center text-[50px] text-[#ebd61d] mb-[50px];
+    @apply flex justify-center font-extrabold items-center text-[50px] text-[#ebd61d] mb-[50px];
   }
 
   /* Tile score container */
   h2 {
-    @apply text-black text-xl;
+    @apply text-black font-extrabold text-xl;
   }
 
   img {
-    @apply w-12 h-12 inline-block ml-2 inline-block mr-2
+    @apply w-12 h-12 ml-2 inline-block mr-2
+  }
+
+  p {
+    @apply font-bold
   }
 }
 
